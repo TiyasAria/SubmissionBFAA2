@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Github App</string>
+    <string name="imageview">ImageView</string>
+    <string name="username">Username</string>
+</resources>
