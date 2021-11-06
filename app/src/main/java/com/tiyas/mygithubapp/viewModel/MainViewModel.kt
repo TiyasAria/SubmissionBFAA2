@@ -5,19 +5,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tiyas.mygithubapp.api.RetrofitClient
-import com.tiyas.mygithubapp.data.Item
 import com.tiyas.mygithubapp.data.UserResponse
+import com.tiyas.mygithubapp.data.Users
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainViewModel : ViewModel() {
-     val listUsers = MutableLiveData<ArrayList<Item>>()
+     val listUsers = MutableLiveData<ArrayList<Users>>()
 
 //    make a function for setSearchUsers
     fun setSearchUsers( query : String ){
     RetrofitClient.apiInstance()
-        .getSearchUsers(query)
+        .getSearchUser(query)
         .enqueue( object  : Callback<UserResponse>{
             override fun onResponse(
                 call: Call<UserResponse>,
@@ -26,6 +26,7 @@ class MainViewModel : ViewModel() {
                 if(response.isSuccessful){
                     val result = response.body()?.items
                     listUsers.postValue(result)
+                    Log.e("Data", "onResponse: ${response.body()?.items}")
                 }
             }
 
@@ -36,8 +37,8 @@ class MainViewModel : ViewModel() {
         })
     }
 
-    fun getSearchUsers() : LiveData<ArrayList<Item>>{
-        return  listUsers
+    fun getSearchUsers() : LiveData<ArrayList<Users>>{
+        return listUsers
     }
 
 }

@@ -3,7 +3,7 @@ package com.tiyas.mygithubapp.data
 
 import com.google.gson.annotations.SerializedName
 
-data class Item(
+data class Users(
     @SerializedName("avatar_url")
     val avatarUrl: String?,
     @SerializedName("company")
@@ -20,5 +20,4 @@ data class Item(
     val name: String?,
     @SerializedName("public_repos")
     val publicRepos: Int?,
-
 )

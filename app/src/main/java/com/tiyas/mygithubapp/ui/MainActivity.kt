@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tiyas.mygithubapp.adapter.UserAdapter
-import com.tiyas.mygithubapp.data.Item
+import com.tiyas.mygithubapp.data.Users
 import com.tiyas.mygithubapp.databinding.ActivityMainBinding
 import com.tiyas.mygithubapp.viewModel.MainViewModel
 
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         userAdapter = UserAdapter()
         userAdapter.notifyDataSetChanged()
         userAdapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback{
-            override fun onItemClick(data: Item) {
+            override fun onItemClick(data: Users) {
                 Intent(this@MainActivity, DetailActivity::class.java).also {
                     it.putExtra(DetailActivity.EXTRA_USERNAME, data.login)
                     startActivity(it)
@@ -41,14 +41,13 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        mainViewModel = ViewModelProvider(
-            this, ViewModelProvider.NewInstanceFactory()
-        ).get(MainViewModel::class.java)
-        mainViewModel.getSearchUsers().observe(this, {
-            if(it != null){
+        mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
+        mainViewModel.getSearchUsers().observe(this,{
+            if (it != null){
                 userAdapter.setData(it)
                 showLoading(false)
                 mainBinding.imgGithub.visibility = View.GONE
+
             }
         })
 

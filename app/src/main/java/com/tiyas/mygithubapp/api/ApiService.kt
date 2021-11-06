@@ -2,11 +2,9 @@ package com.tiyas.mygithubapp.api
 
 import com.tiyas.mygithubapp.BuildConfig
 import com.tiyas.mygithubapp.data.UserResponse
+import com.tiyas.mygithubapp.data.Users
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiService{
 
@@ -14,29 +12,35 @@ interface ApiService{
         const val apikey = BuildConfig.Api_key
     }
 //     untuk mendapatkan seaarch nya
+//    @GET("search/users")
+//    fun getSearchUsers(
+//        @HeaderMap headers: Map<String, String>,
+//        @Query("q") query: String
+//    ) : Call<UserResponse>
+
     @GET("search/users")
-    @Headers("Authorization: token $apikey ")
-    fun getSearchUsers(
-        @Query("q") query: String
-    ) : Call<UserResponse>
+    @Headers("Authorization: $apikey")
+    fun getSearchUser(
+        @Query("q") q:String
+    )  : Call<UserResponse>
 
 
     @GET("users/{username}")
-    @Headers("Authorization: token $apikey")
+    @Headers("Authorization: $apikey")
     fun getDetailUser(
         @Path("username") username : String
-    )  : Call<UserResponse>
+    )  : Call<Users>
 
     @GET("users/{username}/followers")
-    @Headers("Authorization: token $apikey")
+    @Headers("Authorization: $apikey")
     fun getUserFollower(
         @Path("username") username: String
-    ) : Call<ArrayList<UserResponse>>
+    ) : Call<ArrayList<Users>>
 
     @GET("users/{username}/following")
-    @Headers("Authorization: token $apikey")
+    @Headers("Authorization: $apikey")
     fun getUserFollowing(
         @Path("username") username: String
-    ) : Call<ArrayList<UserResponse>>
+    ) : Call<ArrayList<Users>>
 
 }

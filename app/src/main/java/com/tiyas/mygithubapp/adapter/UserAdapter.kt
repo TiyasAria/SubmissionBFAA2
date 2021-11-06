@@ -1,7 +1,6 @@
 package com.tiyas.mygithubapp.adapter
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,30 +8,29 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.tiyas.mygithubapp.R
-import com.tiyas.mygithubapp.data.Item
+import com.tiyas.mygithubapp.data.Users
 import com.tiyas.mygithubapp.databinding.ItemUserBinding
-import com.tiyas.mygithubapp.ui.DetailActivity
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
 
-    private val  users = ArrayList<Item>()
+    private val  users = ArrayList<Users>()
     private var onItemClickCallback : OnItemClickCallback? = null
 
     interface OnItemClickCallback {
-        fun onItemClick(data : Item)
+        fun onItemClick(data : Users)
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(users: ArrayList<Item>){
+    fun setData(user: ArrayList<Users>){
         users.clear()
-        users.addAll(users)
+        users.addAll(user)
         notifyDataSetChanged()
     }
 
     inner class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val itemUserBinding = ItemUserBinding.bind(itemView)
 
-        fun bind(users: Item){
+        fun bind(users: Users){
             Glide.with(itemView.context)
                 .load(users.avatarUrl)
                 .apply(
