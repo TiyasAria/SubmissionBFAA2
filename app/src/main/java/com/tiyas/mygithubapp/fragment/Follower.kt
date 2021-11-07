@@ -46,9 +46,7 @@ class Follower : Fragment() {
         }
 
         showLoading(true)
-        followerViewModel = ViewModelProvider(
-            this, ViewModelProvider.NewInstanceFactory()
-        ).get(FollowerViewModel::class.java)
+        followerViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[FollowerViewModel::class.java]
         followerViewModel.setListFollower(username)
         followerViewModel.getListFollower().observe(viewLifecycleOwner, {
             if(it != null){
@@ -73,6 +71,7 @@ class Follower : Fragment() {
             }
         }
     }
+
 
 
 }

@@ -10,11 +10,11 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient  {
 
-//     untuk menampilkan body nya di log , menggunakan Http logging
+
 private val interceptor = HttpLoggingInterceptor()
     .setLevel(HttpLoggingInterceptor.Level.BODY)
 
-//    untuk menghubungkan ke client
+
 private val client = OkHttpClient.Builder().addInterceptor(interceptor)
     .retryOnConnectionFailure(true)
     .connectTimeout(30, TimeUnit.SECONDS)
@@ -30,7 +30,7 @@ private val client = OkHttpClient.Builder().addInterceptor(interceptor)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
 
-//    func untuk menyambungkan ke endpoint dari class ai service kita
+
     fun apiInstance() : ApiService = retrofit.create(
     ApiService::class.java
     )

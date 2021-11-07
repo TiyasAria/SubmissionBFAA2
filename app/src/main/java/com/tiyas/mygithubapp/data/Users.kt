@@ -4,20 +4,24 @@ package com.tiyas.mygithubapp.data
 import com.google.gson.annotations.SerializedName
 
 data class Users(
+
+    @SerializedName("id")
+    val id: Int = 0,
+
     @SerializedName("avatar_url")
-    val avatarUrl: String?,
+    val avatarUrl: String? = null,
     @SerializedName("company")
-    val company: String?,
+    val company: String? = null,
     @SerializedName("followers")
-    val followers: Int?,
+    val followers: Int? = null ,
     @SerializedName("following")
-    val following: Int?,
+    val following: Int? = null ,
     @SerializedName("location")
-    val location: String?,
+    val location: String? = null,
     @SerializedName("login")
-    val login: String?,
+    val login: String? = null,
     @SerializedName("name")
-    val name: String?,
+    val name: String? = null,
     @SerializedName("public_repos")
-    val publicRepos: Int?,
+    val publicRepos: Int? = null,
 )

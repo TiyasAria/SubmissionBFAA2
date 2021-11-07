@@ -47,8 +47,7 @@ class Following : Fragment() {
         }
 
         showLoading(true)
-        followingViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
-            .get(FollowingViewModel::class.java)
+        followingViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[FollowingViewModel::class.java]
         followingViewModel.setListFollowing(username)
         followingViewModel.getListFollowing().observe(viewLifecycleOwner, {
             if (it != null){

@@ -10,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FollowingViewModel  : ViewModel(){
+class FollowingViewModel : ViewModel(){
 
     val listFollowing = MutableLiveData<ArrayList<Users>>()
 
@@ -22,8 +22,7 @@ class FollowingViewModel  : ViewModel(){
                     response: Response<ArrayList<Users>>
                 ) {
                     if (response.isSuccessful){
-                        val responseBody = response.body()
-                        listFollowing.postValue(responseBody)
+                        listFollowing.postValue(response.body())
                     }
                 }
 

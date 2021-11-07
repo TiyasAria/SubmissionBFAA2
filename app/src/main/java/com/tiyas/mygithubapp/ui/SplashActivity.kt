@@ -12,6 +12,8 @@ import com.tiyas.mygithubapp.databinding.ActivitySplashBinding
 class SplashActivity : AppCompatActivity() {
     private lateinit var splashBinding: ActivitySplashBinding
 
+    private  val time : Long = 2500L
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         splashBinding = ActivitySplashBinding.inflate(layoutInflater)
@@ -22,6 +24,6 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 2500)
+        }, time)
     }
 }

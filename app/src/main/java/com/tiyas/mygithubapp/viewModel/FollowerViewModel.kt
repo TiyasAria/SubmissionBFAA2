@@ -1,5 +1,6 @@
 package com.tiyas.mygithubapp.viewModel
 
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,8 +23,7 @@ class FollowerViewModel : ViewModel() {
                     response: Response<ArrayList<Users>>
                 ) {
                     if (response.isSuccessful){
-                        val responseBody = response.body()
-                        listFollower.postValue(responseBody)
+                        listFollower.postValue(response.body())
                     }
                 }
 

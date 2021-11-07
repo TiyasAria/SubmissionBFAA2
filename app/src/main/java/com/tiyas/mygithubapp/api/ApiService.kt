@@ -11,12 +11,6 @@ interface ApiService{
     companion object{
         const val apikey = BuildConfig.Api_key
     }
-//     untuk mendapatkan seaarch nya
-//    @GET("search/users")
-//    fun getSearchUsers(
-//        @HeaderMap headers: Map<String, String>,
-//        @Query("q") query: String
-//    ) : Call<UserResponse>
 
     @GET("search/users")
     @Headers("Authorization: $apikey")
